@@ -1,0 +1,18 @@
+# ============================================================
+# CBATH .gitattributes
+# 目的（仅限首次初始化）：精确保留当前文件字节。
+#
+# 这不是永久的代码行尾规范。以后如需统一 .cs / .ps1 行尾，
+# 单独进行一次明确的 normalization task / commit，
+# 不在初始化 commit 中隐式完成。
+# ============================================================
+
+*.cs      -text diff
+*.ps1     -text diff
+*.csproj  -text
+*.md      -text diff
+*.txt     -text diff
+*.csv     -text
+*.json    -text
+*.jsonl   -text
+*.bat     -text

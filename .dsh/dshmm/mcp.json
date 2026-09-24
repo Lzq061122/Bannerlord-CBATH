@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "gabs": {
+      "type": "stdio",
+      "command": "E:\\MBmod\\CombatBrain Autonomous test harness\\_source-cache\\gabs\\gabs.exe",
+      "args": [
+        "server",
+        "stdio",
+        "--configDir",
+        "E:\\MBmod\\CombatBrain Autonomous test harness\\gabs-config",
+        "--log-level",
+        "info"
+      ],
+      "cwd": "E:\\MBmod\\CombatBrain Autonomous test harness"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "run_id":  "run-20260924-172123-probe",
+    "started_utc":  "2026-09-24T09:21:23Z",
+    "game_process_id":  28728,
+    "game_version":  null,
+    "test_mod_build_id":  null,
+    "loaded_module_identity":  null,
+    "mcp_connection_result":  "failed",
+    "game_connection_result":  "started_attachment_deferred: \u0027bannerlord148\u0027 verified (pid 28728, bridge 127.0.0.1:19537). The workload is running and its runtime claim is active; attachment was not attempted. Attach from a server session with games_connect.",
+    "mission_state_transitions":  [
+                                      "provider_start:failed",
+                                      "custombattle_screen:False"
+                                  ],
+    "mission_running":  false,
+    "formation_snapshot":  null,
+    "mission_exit_result":  null,
+    "game_exit_result":  "bannerlord148: terminated — workload pid 28728 is gone",
+    "cleanup_result":  "clean",
+    "errors":  [
+                   "never reached CustomBattleScreen"
+               ],
+    "verdict":  "FAIL",
+    "finished_utc":  "2026-09-24T09:25:31Z"
+}

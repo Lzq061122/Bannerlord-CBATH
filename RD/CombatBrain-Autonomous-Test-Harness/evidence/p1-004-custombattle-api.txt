@@ -1,0 +1,37 @@
+=== TaleWorlds.MountAndBlade.CustomBattle.CPUBenchmarkMissionLogic
+    public Void AfterStart()
+    public Void OnMissionTick(Single dt)
+    private Void OnEndMission()
+    public Void OnPreMissionTick(Single dt)
+    public static String CPUBenchmarkMission(List`1 strings)
+    public static String BenchmarkStateStart(List`1 strings)
+    public static Mission OpenCPUBenchmarkMission(String scene)
+=== TaleWorlds.MountAndBlade.CustomBattle.CPUBenchmarkMissionSpawnHandler
+    public Void AfterStart()
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattleState
+    public static String EnableRecordMission(List`1 strings)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattleViews
+    public static MissionView[] OpenCustomBattleMission(Mission mission)
+    public static MissionView[] OpenCustomSiegeBattleMission(Mission mission)
+    public static MissionView[] OpenCustomBattleLordsHallMission(Mission mission)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattleVM
+    public Void ExecuteStart()
+    public String get_StartButtonText()
+    public Void set_StartButtonText(String value)
+    public Void SetStartInputKey(HotKey hotkey)
+    public InputKeyItemVM get_StartInputKey()
+    public Void set_StartInputKey(InputKeyItemVM value)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomGameManager
+    public Void OnAfterCampaignStart(Game game)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleHelper
+    public static Void StartGame(CustomBattleData data)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleProvider
+    public Void StartCustomBattle()
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.TroopTypeSelectionPopUpVM
+    public Void OpenPopUp(String title, MBBindingList`1 troops)
+    public Boolean get_IsOpen()
+    public Void set_IsOpen(Boolean value)
+=== TaleWorlds.MountAndBlade.CustomBattle.CPUBenchmarkMissionLogic+<>c__DisplayClass56_1
+    private IEnumerable`1 <OpenCPUBenchmarkMission>b__0(Mission missionController)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.TroopTypeSelectionPopUpVM+<>c
+    private Boolean <OpenPopUp>b__6_0(CustomBattleTroopTypeVM x)

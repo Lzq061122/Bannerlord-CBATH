@@ -1,0 +1,25 @@
+# 已有方案与 README 初筛
+
+本节的项目发现和 README 初筛由 **GPT-6 Luna 子代理**完成；主代理继续检查 GABS、Lib.GAB、BannerlordCoop 和 DeepSeek Harness 源码。请按每条标记区分证据层次。
+
+| 项目 | 初筛事实与相关性 | 本轮源码结果 / 取舍 |
+|---|---|---|
+| [Bannerlord.GABS](https://github.com/BUTR/Bannerlord.GABS) + [GABS](https://github.com/pardeike/gabs) + [Lib.GAB](https://github.com/BUTR/Lib.GAB) | [DOC] README 描述 AI→MCP→Go GABS→TCP/GABP→Bannerlord mod；最接近现成控制链。 | [CODE] 生命周期、状态、战斗工具确实存在；Formation 只读玩家方，未发现固定 Mission 创建工具。详见 [03](03-GABS-Source-Audit.md)。 |
+| [BannerlordTestingEssentials 历史 fork](https://github.com/Allen-Glass/BannerlordTestingEssentials) | [DOC] 原仓库搜索缓存 README 说明外部测试进程执行游戏内命令、取游戏状态；Alpha Release 日期为 2020-12-28。 | [CODE] 可访问 fork 确认测试进程在 `8998` 端口做 SimpleTCP server，游戏端连 `127.0.0.1:8998`，以 PID/REGISTER/COMMAND/GAME_STATE 字符串通信；详见下节。原仓库现 404，此 fork 与原仓库最终状态是否完全一致未知。 |
+| [BannerlordCoop](https://github.com/Bannerlord-Coop-Team/BannerlordCoop) | [DOC] README 描述多人战役与战斗；其 [LICENSE](https://github.com/Bannerlord-Coop-Team/BannerlordCoop/blob/b99b788649917975508a9a92881319cf91f5c7a9/LICENSE) 限制复制、改动及用于别的项目。 | [CODE] `Coop.IntegrationTests`、`E2E.Tests` 存在；默认提交 **没有** `source/MissionTests/`，与项目文档的路径描述不一致。测试环境主要使用进程内模拟 server/client 和 GameBootstrap，不是已证实的完整 Bannerlord GUI 自动测试；`CoopFieldBattleLauncher` 展示 `MissionState.OpenNew` 的复杂原生行为链。只借鉴方法，不复制代码。 |
+| [DeepSeek Harness 官方仓库](https://github.com/deepseek-ai/deepseek-harness) | [DOC] 官方 [MCP client README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md) 声称支持 stdio、Streamable HTTP、超时及重连；[官方页面](https://www.deepseek.com/harness/en/) 称 developer preview。 | [CODE] 客户端配置、调用、重连均在源码中。与 GABS 的端到端联调仍 [UNKNOWN]。详见 [05](05-DeepSeek-Harness-MCP-Audit.md)。 |
+| [Bannerlord.ReferenceAssemblies 1.4.8.119303](https://www.nuget.org/packages/Bannerlord.ReferenceAssemblies/1.4.8.119303) | [DOC] 总包及 [Core](https://www.nuget.org/packages/Bannerlord.ReferenceAssemblies.Core/1.4.8.119303)、[Native](https://www.nuget.org/packages/Bannerlord.ReferenceAssemblies.Native/1.4.8.119303)、[SandBox](https://www.nuget.org/packages/Bannerlord.ReferenceAssemblies.SandBox/1.4.8.119303)、[CustomBattle](https://www.nuget.org/packages/Bannerlord.ReferenceAssemblies.CustomBattle/1.4.8.119303) 的精确版本存在。 | [RUN] GABS 版本替换后 NuGet 还原成功；全量源码编译失败，见 [04](04-Bannerlord-1.4.8-Compatibility.md)。 |
+| [sbroenne/mcp-windows](https://github.com/sbroenne/mcp-windows) | [DOC] README 声称 UI Automation、截图/OCR、鼠标键盘、窗口与进程管理。 | 未查源码；仅作为启动器、崩溃弹窗和截图的后备通道。 |
+| [win32-mcp-server](https://github.com/RandyNorthrup/win32-mcp-server) | [DOC] README 声称支持 OCR、截图、键鼠、窗口/进程控制、超时。 | 未查源码；Phase 1 不引入额外 computer-use 依赖。 |
+
+## 对 BannerlordCoop 的准确使用边界
+
+[E2ETestEnvironment](https://github.com/Bannerlord-Coop-Team/BannerlordCoop/blob/b99b788649917975508a9a92881319cf91f5c7a9/source/E2E.Tests/Environment/E2ETestEnvironment.cs) 初始化 GameBootstrap、mock 通信和进程内测试状态；[TestEnvironment](https://github.com/Bannerlord-Coop-Team/BannerlordCoop/blob/b99b788649917975508a9a92881319cf91f5c7a9/source/Coop.IntegrationTests/Environment/TestEnvironment.cs) 构造模拟 server/client；[CoopFieldBattleLauncher](https://github.com/Bannerlord-Coop-Team/BannerlordCoop/blob/b99b788649917975508a9a92881319cf91f5c7a9/source/Missions/Battles/CoopFieldBattleLauncher.cs) 是游戏内战斗创建的源码参考。三者回答不同问题，不能把 E2E 名称直接等同于“Agent 自动启动并操纵真实游戏”。
+
+## BannerlordTestingEssentials 历史源码补查
+
+可访问 fork 固定到 `fa975e958d3ba97415ecbbe75144e8fa20e0b5ce`。它分为测试侧 `BannerlordSystemTestingLibrary` 和游戏侧 `BannerlordSystemTestingFramework`。测试侧 [TestEnvironment](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingLibrary/TestEnvironment.cs) 先启动 SimpleTCP server（端口 8998），再为每个 `GameInstance` 启动游戏；游戏侧 [RunnerCommunicator](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingFramework/RunnerCommunicator.cs) 连回 `127.0.0.1:8998`。这是与 GABS “游戏侧 server、外部 GABP client”相反的连接方向。
+
+[TestingFramework](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingFramework/ModuleTestingFramework.cs) 发送 PID、注册命令、用 Harmony 状态事件发送 `GAME_STATE`；[CommandRegistry](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingFramework/CommandRegistry.cs) 反射发现静态方法并按文本命令注册；[GameInstance](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingLibrary/GameInstance.cs) 能发命令、接状态、启动/强杀进程。源码未包含现成固定战斗场景构造器。
+
+值得借鉴：外部测试与游戏 Mod 分工、PID 配对、显式 MainMenuReady 状态、游戏端命令可扩展。不能直接复用的实现：自定义文本协议替代标准 MCP/GABP，`GameProcess.Start` 中等待窗口句柄的循环无可靠超时，`Task.Delay(100)` 未 await，`Stop()` 用 `Kill()`；见 [GameProcess.cs](https://github.com/Allen-Glass/BannerlordTestingEssentials/blob/fa975e958d3ba97415ecbbe75144e8fa20e0b5ce/BannerlordSystemTestingLibrary/GameProcess.cs)。这些是源码可见的可靠性风险，不等于有运行故障证据。仓库为什么没有成为标准方案、是否被 GABS 正式取代，**没有维护者证据**；只能说两者功能有重叠，GABS 现在提供更适合本任务的 MCP 与分层协议。

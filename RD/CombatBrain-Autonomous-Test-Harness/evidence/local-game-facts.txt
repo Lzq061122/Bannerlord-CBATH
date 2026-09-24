@@ -1,0 +1,5 @@
+Observed: 2026-09-23, Asia/Shanghai
+Game path: E:\SteamLibrary\steamapps\common\Mount & Blade II Bannerlord
+Native/SubModule.xml: <Version value = "v1.4.8"/>
+Steam manifest: "buildid"		"24573425"
+No game process launched or test mod deployed by this research run.

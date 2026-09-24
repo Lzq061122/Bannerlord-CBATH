@@ -1,0 +1,64 @@
+{
+  "run_id": "run-20260924-183714-r1",
+  "round": 1,
+  "driver": "DSH Agent via official mcp__gabs__* MCP client tools (single gabs instance, no orchestration script)",
+  "started_utc": "2026-09-24T10:37:14Z",
+  "game_process_id": 46508,
+  "game_version": "v1.4.8.119303",
+  "test_mod_build_id": "b20260924-171754-2eeefc21",
+  "assembly_sha256_runtime": "c6fbe74c827f0aa1a117296bd96ac0bcded07e59df5ab7dabc0575bc6e4a2ed2",
+  "assembly_sha256_disk": "c6fbe74c827f0aa1a117296bd96ac0bcded07e59df5ab7dabc0575bc6e4a2ed2",
+  "assembly_sha256_match": true,
+  "mvid": "f826cf4a-dfc8-43ff-89f8-b7d335cbd6bd",
+  "loaded_module_identity": "Native,SandBoxCore,Sandbox,StoryMode,CustomBattle,CombatBrainAutonomousTestHarness",
+  "mcp_connection_result": "ok",
+  "game_connection_result": "connected via GABP",
+  "mission_state_transitions": [
+    "provider_start:ok(GameLoadingState)",
+    "custombattle_screen:true(12s)",
+    "execute_start:ok(CustomBattleScreen->MissionScreen)",
+    "mission_running:true"
+  ],
+  "mission_name": "battle_terrain_biome_096",
+  "mission_running": true,
+  "mission_exit_result": "ok",
+  "formation_snapshot": {
+    "mission_name": "battle_terrain_biome_096",
+    "mission_time": "2.156",
+    "status": "ok",
+    "teams": [
+      {
+        "side": "Defender",
+        "team_id": 0,
+        "is_player_team": true,
+        "formation_count": 4,
+        "total_units": 100,
+        "formations": [
+          { "formation_index": 0, "formation_class": "Infantry", "unit_count": 24, "arrangement_order": "ArrangementLine", "movement_order": "StandYourGround", "position": { "x": "1341.276", "y": "862.364" } },
+          { "formation_index": 1, "formation_class": "Ranged", "unit_count": 25, "arrangement_order": "ArrangementLine", "movement_order": "StandYourGround", "position": { "x": "1345.274", "y": "858.854" } },
+          { "formation_index": 2, "formation_class": "Cavalry", "unit_count": 26, "arrangement_order": "ArrangementLine", "movement_order": "StandYourGround", "position": { "x": "1327.382", "y": "838.592" } },
+          { "formation_index": 3, "formation_class": "HorseArcher", "unit_count": 25, "arrangement_order": "ArrangementLine", "movement_order": "StandYourGround", "position": { "x": "1362.321", "y": "878.267" } }
+        ]
+      },
+      {
+        "side": "Attacker",
+        "team_id": 1,
+        "is_player_team": false,
+        "formation_count": 5,
+        "total_units": 95,
+        "formations": [
+          { "formation_index": 0, "formation_class": "Infantry", "unit_count": 20, "arrangement_order": "ArrangementLine", "movement_order": "StandYourGround", "position": { "x": "1109.578", "y": "1065.801" } },
+          { "formation_index": 1, "formation_class": "Ranged", "unit_count": 25, "arrangement_order": "ArrangementScatter", "movement_order": "StandYourGround", "position": { "x": "1106.750", "y": "1070.141" } },
+          { "formation_index": 2, "formation_class": "Cavalry", "unit_count": 13, "arrangement_order": "ArrangementCloseOrder", "movement_order": "StandYourGround", "position": { "x": "1124.711", "y": "1089.346" } },
+          { "formation_index": 3, "formation_class": "HorseArcher", "unit_count": 25, "arrangement_order": "ArrangementLine", "movement_order": "Move", "position": { "x": "1087.891", "y": "1052.318" } },
+          { "formation_index": 4, "formation_class": "Cavalry", "unit_count": 12, "arrangement_order": "ArrangementCloseOrder", "movement_order": "StandYourGround", "position": { "x": "1121.510", "y": "1092.079" } }
+        ]
+      }
+    ]
+  },
+  "game_exit_result": "ok",
+  "cleanup_result": "clean",
+  "errors": [],
+  "verdict": "PASS",
+  "finished_utc": "2026-09-24T10:41:00Z"
+}

@@ -1,0 +1,25 @@
+{
+  "run_id": "run-20260924-184458-r3-attempt1-FAILED",
+  "round": 3,
+  "attempt": 1,
+  "verdict": "FAIL",
+  "driver": "DSH Agent via official mcp__gabs__* MCP client tools",
+  "started_utc": "2026-09-24T10:44:58Z",
+  "game_process_id": 29444,
+  "mcp_connection_result": "ok",
+  "game_connection_result": "FAILED - 'started, but GABP was not ready after 20s: connect cancelled during backoff: context deadline exceeded'",
+  "mission_state_transitions": [],
+  "mission_running": false,
+  "formation_snapshot": null,
+  "game_exit_result": "forced kill (stalled process)",
+  "cleanup_result": "clean",
+  "errors": [
+    "GABP bridge never came up; no TCP listener in 19500-19600; bridge port 19537 closed",
+    "process 29444 alive and Responding=True but only 61.4MB RSS / 9.28s CPU - stalled in early boot, never loaded modules",
+    "no fresh module logs (Logs dir newest = 2026-08-31), no rgl_log, launch.log empty (0 bytes)"
+  ],
+  "root_cause": "steam.exe (main Steam client) was NOT running. Only orphaned steamwebhelper.exe processes from 16:14 remained. Per handover note 5.4, Bannerlord without a live Steam API fails early and silently. The earlier 'steam count = 1' reading counted steamwebhelper, not steam.exe.",
+  "remediation": "Relaunched steam.exe (pid 28856), waited 50s+30s for API readiness, reset safely_exited=1, killed stalled pid 29444.",
+  "note": "This attempt is NOT counted as one of the 3 rounds. Consecutive PASS counting restarted from the successful r3 attempt.",
+  "finished_utc": "2026-09-24T10:47:00Z"
+}

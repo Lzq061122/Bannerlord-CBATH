@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "portRanges": {
+    "customRanges": [
+      { "min": 19500, "max": 19600 }
+    ]
+  },
+  "timeouts": {
+    "startup": {
+      "processStartSeconds": 30,
+      "gabpConnectSeconds": 120
+    },
+    "session": {
+      "ownerLeaseSeconds": 120
+    }
+  },
+  "games": {
+    "bannerlord148": {
+      "id": "bannerlord148",
+      "name": "Mount & Blade II: Bannerlord (CBATH test)",
+      "description": "Bannerlord v1.4.8.119303 for CBATH. Framework modules (Harmony, ButterLib, UIExtenderEx, MCMv5) MUST appear before Native in the load order - ButterLib/UIExtenderEx/MCM abort module loading with a 'is loaded after the Native!' warning dialog otherwise. CombatBrain is the temporary subject under test; CustomBattle is required to reach a real battle mission.",
+      "launchMode": "DirectPath",
+      "target": "E:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
+      "workingDir": "E:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client",
+      "args": [
+        "/singleplayer",
+        "_MODULES_*Bannerlord.Harmony*Bannerlord.ButterLib*Bannerlord.UIExtenderEx*Bannerlord.MBOptionScreen*Native*SandBoxCore*Sandbox*StoryMode*CustomBattle*CombatBrain*CombatBrainAutonomousTestHarness*_MODULES_",
+        "/anticheat"
+      ]
+    }
+  }
+}

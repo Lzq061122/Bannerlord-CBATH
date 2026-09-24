@@ -1,0 +1,13 @@
+{
+    "gamePid":  46652,
+    "sendEscape":  false,
+    "samples":  [
+                    "8,\\u003cnull\\u003e,False",
+                    "10,\u003cnone\u003e,False",
+                    "12,\u003cnone\u003e,False",
+                    "14,\u003cnone\u003e,False",
+                    "15,\u003cnone\u003e,False",
+                    "17,\u003cnone\u003e,False"
+                ],
+    "firstNonNullScreenSec":  8
+}

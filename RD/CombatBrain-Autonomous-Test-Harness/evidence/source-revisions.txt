@@ -1,0 +1,8 @@
+Source snapshots (git rev-parse HEAD):
+Bannerlord.GABS b44f5cf085509b2a6544a684a5fc5ec543fa073c
+gabs b5f441a04fa908852fdece18a08a8876ac970a4d
+Lib.GAB 4e7f90dd71e45274bf904d36d0415f26e6e6a008
+BannerlordCoop b99b788649917975508a9a92881319cf91f5c7a9
+deepseek-harness 46a7f68b0922371ce7144b668b90e377d8e799f4
+BannerlordTestingEssentials original URL returned 404 on 2026-09-23; original repository source not retrieved.
+BannerlordTestingEssentials accessible historical fork (Allen-Glass) fa975e958d3ba97415ecbbe75144e8fa20e0b5ce

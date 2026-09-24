@@ -1,0 +1,56 @@
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData
+    prop IEnumerable`1 GameTypes
+    prop IEnumerable`1 PlayerTypes
+    prop IEnumerable`1 PlayerSides
+    prop IEnumerable`1 Characters
+    prop IEnumerable`1 Factions
+    prop IEnumerable`1 TimesOfDay
+    prop IEnumerable`1 Seasons
+    prop IEnumerable`1 WallHitpoints
+    prop IEnumerable`1 SceneLevels
+    field Int32 NumberOfAttackerMeleeMachines
+    field Int32 NumberOfAttackerRangedMachines
+    field Int32 NumberOfDefenderRangedMachines
+    field String CoreContentDefaultSceneName
+    field String GameTypeStringId
+    field String SceneId
+    field String SeasonId
+    field BasicCharacterObject PlayerCharacter
+    field BasicCharacterObject PlayerSideGeneralCharacter
+    field CustomBattleCombatant PlayerParty
+    field CustomBattleCombatant EnemyParty
+    field Single TimeOfDay
+    field Boolean IsPlayerGeneral
+    field String SceneLevel
+    field List`1 AttackerMachines
+    field List`1 DefenderMachines
+    field Single[] WallHitpointPercentages
+    field Boolean HasAnySiegeTower
+    field Boolean IsPlayerAttacker
+    field Boolean IsReliefAttack
+    field Boolean IsSallyOut
+    field Int32 SceneUpgradeLevel
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<GetAllAttackerMeleeMachines>d__22
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<GetAllDefenderRangedMachines>d__23
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<GetAllAttackerRangedMachines>d__24
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_GameTypes>d__26
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_PlayerTypes>d__28
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_PlayerSides>d__30
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_Characters>d__32
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_Factions>d__34
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_TimesOfDay>d__36
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_Seasons>d__38
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_WallHitpoints>d__40
+    ctor(Int32 <>1__state)
+=== TaleWorlds.MountAndBlade.CustomBattle.CustomBattle.CustomBattleData+<get_SceneLevels>d__42
+    ctor(Int32 <>1__state)

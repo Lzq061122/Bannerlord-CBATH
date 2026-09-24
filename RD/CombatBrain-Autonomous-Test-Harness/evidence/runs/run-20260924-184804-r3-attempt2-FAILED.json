@@ -1,0 +1,26 @@
+{
+  "run_id": "run-20260924-184804-r3-attempt2-FAILED",
+  "round": 3,
+  "attempt": 2,
+  "verdict": "FAIL",
+  "driver": "DSH Agent via official mcp__gabs__* MCP client tools",
+  "started_utc": "2026-09-24T10:48:04Z",
+  "game_process_id": null,
+  "mcp_connection_result": "ok",
+  "game_connection_result": "FAILED - 'started, but GABP was not ready after 20.001s: connect cancelled during backoff: context deadline exceeded'",
+  "mission_state_transitions": [],
+  "mission_running": false,
+  "formation_snapshot": null,
+  "game_exit_result": "process exited on its own during startup",
+  "cleanup_result": "clean",
+  "errors": [
+    "Game process died during startup; no Bannerlord process present after 45s wait",
+    "No TCP listener in 19500-19600",
+    "GABS status reported: 'stopped (stale runtime state was removed)'",
+    "bridge.json written with startedAt 10:48:04Z but launch.log is empty (0 bytes)"
+  ],
+  "root_cause": "Same as attempt 1 - steam.exe still not running at the moment of this launch (Steam relaunch happened after this attempt).",
+  "remediation": "Relaunched steam.exe, verified 1 steam.exe + 8 steamwebhelper.exe, then retried.",
+  "note": "This attempt is NOT counted as one of the 3 rounds. Consecutive PASS counting restarted from the successful r3 attempt.",
+  "finished_utc": "2026-09-24T10:49:00Z"
+}

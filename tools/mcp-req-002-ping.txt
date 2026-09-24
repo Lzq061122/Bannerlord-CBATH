@@ -1,0 +1,4 @@
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"cbath-test-driver","version":"1.0.0"}}}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"games_connect","arguments":{"gameId":"bannerlord148","timeout":30}}}
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"games_tool_names","arguments":{"gameId":"bannerlord148","brief":true}}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"games_call_tool","arguments":{"gameId":"bannerlord148","tool":"cbath/ping","timeout":20}}}

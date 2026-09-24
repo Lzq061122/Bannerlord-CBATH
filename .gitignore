@@ -1,0 +1,53 @@
+# ============================================================
+# CBATH .gitignore
+# 原则：只跟踪 CBATH 自有源码 / 设计文档 / 手写配置 / durable evidence
+# ============================================================
+
+# === 第三方源码缓存（6 个独立 Git 仓库，含 upstream remote） ===
+_source-cache/
+
+# === CBATH 测试 Mod 生成物（build-deploy.ps1 产出：build_id / MVID / build_timestamp） ===
+RD/CombatBrain-Autonomous-Test-Harness/experiments/test-mod/CBATH/BuildIdentity.g.cs
+
+# === 游戏媒体资产副本（实验过程产物，非 CBATH 源码资产） ===
+_intro-video-backup/
+_intro-video-hidden/
+
+# === .NET / MSBuild 构建产物 ===
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+# === GABS 运行时状态（含 token / 锁 / 活动日志 / lease） ===
+# 说明：整个 bannerlord148\ 是运行时目录（bridge/history/launch/runtime/lock 均为进程产出）。
+# 手写入口配置是 gabs-config/config.json，位于该目录之外。
+gabs-config/bannerlord148/
+
+# === 工具运行时状态（下划线前缀约定 = 临时/运行时） ===
+tools/_*
+
+# === Evidence：原始 / 隐私风险产物 ===
+RD/CombatBrain-Autonomous-Test-Harness/evidence/p1-003-startup-timeline-baseline.csv
+RD/CombatBrain-Autonomous-Test-Harness/evidence/p1-003-startup-baseline.csv
+RD/CombatBrain-Autonomous-Test-Harness/evidence/gabs-v148-build.txt
+RD/CombatBrain-Autonomous-Test-Harness/evidence/p1-001-pid.txt
+RD/CombatBrain-Autonomous-Test-Harness/evidence/runs/probe-*.json
+
+# === 日志 / 临时 ===
+*.log
+*.tmp
+~$*
+
+# === IDE / 工具 ===
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+
+# === OS 杂项 ===
+Thumbs.db
+Desktop.ini
+.DS_Store
