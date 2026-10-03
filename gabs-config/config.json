@@ -24,7 +24,7 @@
       "workingDir": "E:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client",
       "args": [
         "/singleplayer",
-        "_MODULES_*Bannerlord.Harmony*Bannerlord.ButterLib*Bannerlord.UIExtenderEx*Bannerlord.MBOptionScreen*Native*SandBoxCore*Sandbox*StoryMode*CustomBattle*CombatBrain*CombatBrainAutonomousTestHarness*_MODULES_",
+        "_MODULES_*Bannerlord.Harmony*Bannerlord.ButterLib*Bannerlord.UIExtenderEx*Bannerlord.MBOptionScreen*Native*SandBoxCore*Sandbox*StoryMode*CustomBattle*CombatBrain*CombatBrainAutonomousTestHarness*CommandLabProbe*_MODULES_",
         "/anticheat"
       ]
     }

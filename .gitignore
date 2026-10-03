@@ -34,6 +34,16 @@ RD/CombatBrain-Autonomous-Test-Harness/evidence/gabs-v148-build.txt
 RD/CombatBrain-Autonomous-Test-Harness/evidence/p1-001-pid.txt
 RD/CombatBrain-Autonomous-Test-Harness/evidence/runs/probe-*.json
 
+# === Evidence：逐次运行记录（结论已入 P2-00X 报告，原始记录不逐份入库） ===
+RD/CombatBrain-Autonomous-Test-Harness/evidence/runs/zero-touch-*.json
+RD/CombatBrain-Autonomous-Test-Harness/evidence/runs/zt-*.json
+
+# === 调试输出（_dump*.txt 为临时转储） ===
+_dump*.txt
+
+# === 手写配置的历史备份 ===
+gabs-config/*.bak-*
+
 # === 日志 / 临时 ===
 *.log
 *.tmp

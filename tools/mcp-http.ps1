@@ -42,7 +42,7 @@ function Invoke-McpHttp {
 
     $body = @{
         jsonrpc = '2.0'
-        id      = [int](Get-Date).Ticks % 100000
+        id      = [int]((Get-Date).Ticks % 100000)
         method  = 'tools/call'
         params  = @{ name = $Tool; arguments = $Arguments }
     } | ConvertTo-Json -Depth 6 -Compress

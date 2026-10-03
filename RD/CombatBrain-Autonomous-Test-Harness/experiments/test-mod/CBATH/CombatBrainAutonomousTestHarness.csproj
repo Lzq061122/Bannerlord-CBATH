@@ -20,6 +20,7 @@
     <Compile Include="ScreenProbe.cs" />
     <Compile Include="FormationProbe.cs" />
     <Compile Include="MissionControl.cs" />
+    <Compile Include="AutoDeployControl.cs" />
     <Compile Include="CbathTools.cs" />
     <Compile Include="SamplingMissionBehavior.cs" />
     <Compile Include="RunRecord.cs" />

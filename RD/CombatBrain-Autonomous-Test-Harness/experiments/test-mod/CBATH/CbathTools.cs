@@ -91,5 +91,17 @@ namespace CombatBrainAutonomousTestHarness
         {
             return RunRecord.Get();
         }
+
+        [Tool("cbath/auto_finish_deployment", Description = "End the deployment phase without UI input. Returns status=not_ready until TeamSetupOver is true; poll it. On ok, returns the before/after deployment state including AllowAiTicking.")]
+        public object AutoFinishDeployment()
+        {
+            return AutoDeployControl.AutoFinishDeployment();
+        }
+
+        [Tool("cbath/delegate_team_to_ai", Description = "Hand every formation of the player's team to the engine AI, without pressing F6. Returns each formation's IsAIControlled before and after.")]
+        public object DelegateTeamToAi()
+        {
+            return AutoDeployControl.DelegateTeamToAi();
+        }
     }
 }
