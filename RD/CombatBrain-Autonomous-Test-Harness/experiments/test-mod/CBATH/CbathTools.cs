@@ -100,6 +100,12 @@ namespace CombatBrainAutonomousTestHarness
             return RunRecord.Get();
         }
 
+        [Tool("cbath/get_p2_formation_evidence", Description = "P2 multi-formation evidence, read independently on the engine side: team/slot and object mapping, engine vs effective active counts, real active-member centroid kept separate from the reference position, actual movement order, actual Move target and its readability, and AI/player eligibility.")]
+        public object GetP2FormationEvidence()
+        {
+            return P2FormationEvidence.Read();
+        }
+
         [Tool("cbath/auto_finish_deployment", Description = "End the deployment phase without UI input. Returns status=not_ready until TeamSetupOver is true; poll it. On ok, returns the before/after deployment state including AllowAiTicking.")]
         public object AutoFinishDeployment()
         {

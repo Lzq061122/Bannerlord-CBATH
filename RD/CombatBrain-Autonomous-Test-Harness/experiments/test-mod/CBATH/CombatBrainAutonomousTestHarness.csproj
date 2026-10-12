@@ -19,6 +19,7 @@
     <Compile Include="MainThreadDispatcher.cs" />
     <Compile Include="ScreenProbe.cs" />
     <Compile Include="FormationProbe.cs" />
+    <Compile Include="P2FormationEvidence.cs" />
     <Compile Include="MissionControl.cs" />
     <Compile Include="BattleSetup.cs" />
     <Compile Include="AutoDeployControl.cs" />
