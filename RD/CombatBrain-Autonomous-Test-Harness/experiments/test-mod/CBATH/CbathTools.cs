@@ -80,10 +80,18 @@ namespace CombatBrainAutonomousTestHarness
             return MissionControl.H3ProviderStart();
         }
 
-        [Tool("cbath/h3_start_from_screen", Description = "H3b: on the CustomBattle screen, invoke its ExecuteStart to launch the battle.")]
-        public object H3StartFromScreen()
+        [Tool("cbath/h3_start_from_screen", Description = "H3b: on the CustomBattle screen, invoke its ExecuteStart to launch the battle. Optional composition arguments write the battle setup first; with no arguments the original behaviour is unchanged.")]
+        public object H3StartFromScreen(
+            [ToolParameter(Description = "Player side army size; 0 leaves it unchanged")] int playerArmySize = 0,
+            [ToolParameter(Description = "Enemy side army size; 0 leaves it unchanged")] int enemyArmySize = 0,
+            [ToolParameter(Description = "Player composition as meleeInf,rangedInf,meleeCav,rangedCav; empty leaves it unchanged")] string playerComposition = "",
+            [ToolParameter(Description = "Enemy composition as meleeInf,rangedInf,meleeCav,rangedCav; empty leaves it unchanged")] string enemyComposition = "",
+            [ToolParameter(Description = "Player side faction StringId; empty leaves it unchanged")] string playerFaction = "",
+            [ToolParameter(Description = "Enemy side faction StringId; empty leaves it unchanged")] string enemyFaction = "",
+            [ToolParameter(Description = "Battle map scene id; empty keeps the current selection")] string mapId = "")
         {
-            return MissionControl.H3StartFromScreen();
+            return MissionControl.H3StartFromScreen(playerArmySize, enemyArmySize, playerComposition,
+                                                    enemyComposition, playerFaction, enemyFaction, mapId);
         }
 
         [Tool("cbath/get_last_run", Description = "Full 1 Hz engine-side Formation timeline recorded during the most recent mission.")]

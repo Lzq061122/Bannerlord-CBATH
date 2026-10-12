@@ -281,7 +281,17 @@ namespace CombatBrainAutonomousTestHarness
         }
 
         // H3b: after the provider puts us on the CustomBattle screen, trigger its Start.
+        // With no composition arguments this behaves exactly as before; arguments write the
+        // battle setup into the same VM before ExecuteStart, inside the same main-thread task
+        // so no UI frame can refresh the view model in between.
         internal static Dictionary<string, object> H3StartFromScreen()
+        {
+            return H3StartFromScreen(0, 0, "", "", "", "", "");
+        }
+
+        internal static Dictionary<string, object> H3StartFromScreen(
+            int playerArmySize, int enemyArmySize, string playerComposition,
+            string enemyComposition, string playerFaction, string enemyFaction, string mapId)
         {
             return MainThreadDispatcher.EnqueueAsync(() =>
             {
@@ -310,6 +320,29 @@ namespace CombatBrainAutonomousTestHarness
                     result.Add("vm_field", vmField == "" ? "<not found>" : vmField);
                     if (vm == null) { result.Add("status", "error"); result.Add("error", "CustomBattleVM instance not found"); return result; }
 
+                    var cfg = ParseComposition(playerComposition, enemyComposition,
+                                               playerArmySize, enemyArmySize,
+                                               playerFaction, enemyFaction, mapId);
+                    if (cfg != null)
+                    {
+                        var setup = BattleSetup.Apply(vm, cfg);
+                        result.Add("setup", setup);
+                        if (setup.ContainsKey("status") && (string)setup["status"] == "error")
+                        {
+                            result.Add("status", "error");
+                            result.Add("error", "battle setup rejected: " + setup["error"]);
+                            return result;
+                        }
+                        var selectedMap = setup.ContainsKey("map_selected_id") ? (string)setup["map_selected_id"] : "";
+                        var wantedMap = string.IsNullOrEmpty(mapId) ? "" : mapId;
+                        if (wantedMap.Length > 0 && selectedMap != wantedMap)
+                        {
+                            result.Add("status", "error");
+                            result.Add("error", "map selection did not take effect: wanted " + wantedMap + " got " + selectedMap);
+                            return result;
+                        }
+                    }
+
                     var mi = vm.GetType().GetMethod("ExecuteStart",
                         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
                     if (mi == null) { result.Add("status", "error"); result.Add("error", "ExecuteStart not found"); return result; }
@@ -332,6 +365,44 @@ namespace CombatBrainAutonomousTestHarness
                 }
                 return result;
             }).GetAwaiter().GetResult();
+        }
+
+        // Null when no composition argument was supplied, so the original launch path is used.
+        private static BattleSetup.Config ParseComposition(string playerComposition, string enemyComposition,
+                                                           int playerArmySize, int enemyArmySize,
+                                                           string playerFaction, string enemyFaction, string mapId)
+        {
+            if (string.IsNullOrEmpty(playerComposition) && string.IsNullOrEmpty(enemyComposition) &&
+                playerArmySize <= 0 && enemyArmySize <= 0 &&
+                string.IsNullOrEmpty(playerFaction) && string.IsNullOrEmpty(enemyFaction) &&
+                string.IsNullOrEmpty(mapId))
+            {
+                return null;
+            }
+
+            return new BattleSetup.Config
+            {
+                PlayerFaction = playerFaction,
+                EnemyFaction = enemyFaction,
+                PlayerArmySize = playerArmySize,
+                EnemyArmySize = enemyArmySize,
+                PlayerComposition = ParseInts(playerComposition),
+                EnemyComposition = ParseInts(enemyComposition),
+                MapId = mapId
+            };
+        }
+
+        private static int[] ParseInts(string csv)
+        {
+            var parts = (csv ?? "").Split(',');
+            var values = new int[parts.Length];
+            for (int i = 0; i < parts.Length; i++)
+            {
+                int parsed;
+                int.TryParse(parts[i].Trim(), out parsed);
+                values[i] = parsed;
+            }
+            return values;
         }
 
         private static string SafeName()
