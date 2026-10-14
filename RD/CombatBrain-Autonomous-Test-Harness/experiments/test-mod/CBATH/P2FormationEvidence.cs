@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -26,6 +27,9 @@ namespace CombatBrainAutonomousTestHarness
                 }
 
                 result.Add("status", "ok");
+                // 独立验收要求：同槽换对象必须能独立区分，且身份不能从 CB2 日志回填。
+                // 这三项全部由本次调用从引擎现场对象直接读取。
+                result.Add("mission_identity", IdentityOf(mission));
                 result.Add("scene", Safe(() => mission.SceneName, "<unknown>"));
                 result.Add("mission_time", Safe(() => mission.CurrentTime.ToString("F3"), "<unknown>"));
                 result.Add("sampled_utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
@@ -95,6 +99,8 @@ namespace CombatBrainAutonomousTestHarness
             var entry = new Dictionary<string, object>
             {
                 { "formation_index", (int)f.FormationIndex },
+                // 编队对象身份：同一槽位换了对象必须能区分，全部现场读取。
+                { "formation_identity", IdentityOf(f) },
                 { "formation_class", Safe(() => f.RepresentativeClass.ToString(), "<unknown>") },
                 { "engine_unit_count", f.CountOfUnits },
                 { "active_member_count", activeCount },
@@ -173,6 +179,21 @@ namespace CombatBrainAutonomousTestHarness
                 { "x", v.x.ToString("F3") },
                 { "y", v.y.ToString("F3") }
             };
+        }
+
+        // 运行时对象身份：与 CB2 的 ObjectIdentity 采用同一可见口径（引用身份哈希），
+        // 但这里直接从引擎对象取，不读 CB2 日志、不依赖 CB2 是否在线。
+        private static string IdentityOf(object o)
+        {
+            if (o == null) return "<null>";
+            try
+            {
+                return RuntimeHelpers.GetHashCode(o).ToString("x8") + "@" + o.GetType().Name;
+            }
+            catch (Exception e)
+            {
+                return "<unreadable:" + e.GetType().Name + ">";
+            }
         }
 
         private static string Safe(Func<string> f, string fallback)
